@@ -6,9 +6,10 @@ async function getProjects(){
     return result
 }
 
+
 async function insertProject(newProject){
  const [project_id] = await db('projects').insert(newProject)
-return 
+return getProjects().where({project_id}).first()
 }
 
 module.exports = {getProjects, insertProject}
